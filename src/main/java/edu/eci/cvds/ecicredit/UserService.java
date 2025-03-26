@@ -13,11 +13,11 @@ import java.util.Optional;
 @Service
 public class UserService {
     UserRepository userRepo;
-    BillController reservationController;
+    BillController billController;
     @Autowired
-    public UserService(UserRepository userRepo, BillController reservationController){
+    public UserService(UserRepository userRepo, BillController billController){
         this.userRepo= userRepo;
-        this.reservationController = reservationController;
+        this.billController = billController;
     }
 
     public boolean createUser(User u) {

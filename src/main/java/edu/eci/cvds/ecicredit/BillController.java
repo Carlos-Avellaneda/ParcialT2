@@ -6,13 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/bill")
 @CrossOrigin(origins = "*")
 public class BillController {
     @Autowired
-    static BillService billService;
+     BillService billService;
 
     @PostMapping
     public ResponseEntity<String> createReservation(@RequestBody Bill bill) {
@@ -26,11 +27,6 @@ public class BillController {
         return ResponseEntity.ok("Bill successfully deleted ");
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<Bill> searchReservation(@PathVariable String id) {
-        Bill searched = billService.searchBill(id);
-        return ResponseEntity.status(HttpStatus.OK).body(searched);
-    }
 
 
     @GetMapping("/user/{userId}")
@@ -38,8 +34,7 @@ public class BillController {
         return billService.searchReservationByUserId(userId);
     }
 
-
-    @GetMapping
+    @GetMapping("/all")
     public List<Bill> getAllBills() {
         return billService.getAllBills();
     }
